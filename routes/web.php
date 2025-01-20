@@ -9,7 +9,7 @@ Route::get('/', function () {
     }
 
     return view('welcome');
-});
+})->name('home');
 
 Route::middleware('guest')->group(function() {
     Route::view('/register', 'auth.register')->name('register');

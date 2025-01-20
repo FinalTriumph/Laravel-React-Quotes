@@ -1,9 +1,9 @@
 ## Laravel practice project
 
-***This is not meant to be documentation or precise and detailed instructions, it's only to show some of the thought process and make notes for myself.***
-
-This project is built by starting with these steps:
+Built by starting with these steps:
 - https://github.com/FinalTriumph/Laravel-Simple-Auth
 - https://github.com/FinalTriumph/Laravel-React
 
-To be continued.
+Further steps probably will not be commented here like in those previous projects, can follow changes made looking at commits.
+
+And longer description here will be added probably only when project will be finished.
