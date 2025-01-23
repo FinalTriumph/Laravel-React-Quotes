@@ -2,27 +2,17 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\QuoteController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Only for testing, will be deleted later
-Route::get('/test', function (Request $request) {
-    return response()->json([
-        'response' => 'test'
-    ]);
-});
+Route::apiResource('quotes', QuoteController::class)->only([
+    'index',
+]);
 
-// Only for testing, will be deleted later
-Route::post('/test', function (Request $request) {
-    // Validate
-    $fields = $request->validate([
-        'author' => 'required',
-        'quote' => 'required',
-    ]);
+Route::apiResource('quotes', QuoteController::class)->only([
+    'store',
+])->middleware('auth:sanctum');
 
-    return response()->json([
-        'fields' => $fields
-    ]);
-});

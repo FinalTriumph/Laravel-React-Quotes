@@ -1,5 +1,6 @@
 import React from 'react';
 import NewQuote from '../components/NewQuote.jsx';
+import Quotes from '../components/Quotes.jsx';
 
 export default function Home({ name, email }) {
     return (
@@ -9,6 +10,7 @@ export default function Home({ name, email }) {
                 <p className="text-white">Email: {email}</p>
             </div>
             <NewQuote save />
+            <Quotes />
         </div>
     );
 }
