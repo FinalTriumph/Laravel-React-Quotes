@@ -16,10 +16,10 @@ export default function NewQuote({ save }) {
         setError(null);
         setSavingStatus(null);
 
-        axios.get('https://programming-quotes-api.azurewebsites.net/api/quotes/random')
+        axios.get('https://laravel-react-quotes.dev/api/quotes/random?source=zen')
             .then(response => {
-                setQuote(response.data.text);
-                setAuthor(response.data.author);
+                setQuote(response.data.data.quote);
+                setAuthor(response.data.data.author);
 
                 setLoading(false);
             })

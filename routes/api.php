@@ -16,3 +16,6 @@ Route::apiResource('quotes', QuoteController::class)->only([
     'store',
 ])->middleware('auth:sanctum');
 
+Route::prefix('quotes')->group(function () {
+    Route::get('/random', [QuoteController::class, 'random']);
+});

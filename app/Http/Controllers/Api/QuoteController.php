@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quote;
+use App\Plugins\RandomQuote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -82,4 +83,15 @@ class QuoteController extends Controller
     {
         //
     } */
+
+    /**
+     * Get random quote
+     */
+    public function random(Request $request, RandomQuote $randomQuote)
+    {
+        return response()->json([
+            'status' => 'ok',
+            'data' => $randomQuote->get($request->query('source')),
+        ]);
+    }
 }
