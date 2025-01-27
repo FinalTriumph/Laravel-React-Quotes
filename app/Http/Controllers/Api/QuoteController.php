@@ -16,7 +16,7 @@ class QuoteController extends Controller
     public function index()
     {
         // Get quotes
-        $quotes = Quote::latest()->get();
+        $quotes = Quote::latest()->paginate(4);
 
         // Prepare response data
         $preparedData = [];
@@ -33,7 +33,8 @@ class QuoteController extends Controller
         // Respond
         return response()->json([
             'status' => 'ok',
-            'quotes' => $preparedData
+            'quotes' => $preparedData,
+            'totalPages' => $quotes->lastPage(),
         ]);
     }
 
