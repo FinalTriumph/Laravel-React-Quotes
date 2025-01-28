@@ -1,6 +1,5 @@
 import React from 'react';
-import NewQuote from '../components/NewQuote.jsx';
-import Quotes from '../components/Quotes.jsx';
+import RandomQuoteContainer from '../containers/RandomQuoteContainer.jsx';
 
 export default function Home({ name, email }) {
     return (
@@ -9,8 +8,12 @@ export default function Home({ name, email }) {
                 <h1 className="text-white font-bold">Welcome, {name}!</h1>
                 <p className="text-white">Email: {email}</p>
             </div>
-            <NewQuote save />
-            <Quotes />
+            <div className="grid grid-cols-2">
+                <RandomQuoteContainer source="forismatic" save />
+                <RandomQuoteContainer source="quoterism" save />
+                <RandomQuoteContainer source="zen" save />
+                <RandomQuoteContainer source="programming" save />
+            </div>
         </div>
     );
 }

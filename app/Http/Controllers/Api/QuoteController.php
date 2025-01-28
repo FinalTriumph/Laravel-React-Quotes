@@ -39,6 +39,34 @@ class QuoteController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function my()
+    {
+        // Get quotes
+        $quotes = Auth::user()->quotes()->latest()->paginate(4);
+
+        // Prepare response data
+        $preparedData = [];
+        foreach($quotes as $quote) {
+            $preparedData[] = [
+                'id' => $quote->id,
+                'quote' => $quote->quote,
+                'author' => $quote->author,
+                'savedBy' => $quote->user->name,
+                'savedAt' => $quote->created_at->format('d.m.Y H:i')
+            ];
+        }
+
+        // Respond
+        return response()->json([
+            'status' => 'ok',
+            'quotes' => $preparedData,
+            'totalPages' => $quotes->lastPage(),
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)

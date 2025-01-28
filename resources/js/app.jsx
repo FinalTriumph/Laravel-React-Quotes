@@ -1,18 +1,28 @@
 import './bootstrap';
 import '../css/app.css';
 
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Welcome from './pages/Welcome';
 import Home from './pages/Home';
+import AllQuotes from './pages/quotes/AllQuotes';
+import MyQuotes from './pages/quotes/MyQuotes';
 
-const welcome = document.getElementById('welcome');
-if (welcome) {
-    ReactDOM.createRoot(welcome).render(<Welcome />);
-}
+const pages = {
+    'welcome': <Welcome />,
+    'home': <Home />,
+    'all-quotes': <AllQuotes />,
+    'my-quotes': <MyQuotes />,
+};
 
-const home = document.getElementById('home');
-if (home) {
-    const props = Object.assign({}, home.dataset);
+Object.keys(pages).forEach((id) => {
+    const element = document.getElementById(id);
+    if (!element) {
+        return;
+    }
 
-    ReactDOM.createRoot(home).render(<Home {...props} />)
-}
+    const props = Object.assign({}, element.dataset);
+    const render = Object.keys(props).length ? React.cloneElement(pages[id], props) : pages[id];
+
+    ReactDOM.createRoot(element).render(render);
+});

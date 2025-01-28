@@ -11,6 +11,7 @@ class RandomQuote
         'forismatic' => 'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en',
         'programming' => 'https://programming-quotes-api.azurewebsites.net/api/quotes/random',
         'zen' => 'https://zenquotes.io/api/random',
+        'quoterism' => 'https://www.quoterism.com/api/quotes/random',
     ];
 
     //
@@ -30,6 +31,9 @@ class RandomQuote
             case 'zen':
                 $return = $this->prepareZen($response);
                 break;
+            case 'quoterism':
+                $return = $this->prepareQuoterism($response);
+                break;
             default:
                 break;
         }
@@ -40,7 +44,7 @@ class RandomQuote
     private function prepareForismatic(array $data): array
     {
         return [
-            'quote' => $data['quoteText'],
+            'text' => $data['quoteText'],
             'author' => $data['quoteAuthor'],
             'source' => 'forismatic'
         ];
@@ -50,7 +54,7 @@ class RandomQuote
     private function prepareProgramming(array $data): array
     {
         return [
-            'quote' => $data['text'],
+            'text' => $data['text'],
             'author' => $data['author'],
             'source' => 'programming',
         ];
@@ -60,9 +64,19 @@ class RandomQuote
     private function prepareZen(array $data): array
     {
         return [
-            'quote' => $data[0]['q'],
+            'text' => $data[0]['q'],
             'author' => $data[0]['a'],
             'source' => 'zen'
+        ];
+    }
+
+    //
+    private function prepareQuoterism(array $data): array
+    {
+        return [
+            'text' => $data['random']['text'],
+            'author' => $data['random']['author']['name'],
+            'source' => 'quoterism'
         ];
     }
 

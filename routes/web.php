@@ -11,6 +11,8 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+Route::view('/quotes/all', 'quotes.all')->name('quotes.all');
+
 Route::middleware('guest')->group(function() {
     Route::view('/register', 'auth.register')->name('register');
     Route::view('/login', 'auth.login')->name('login');
@@ -20,5 +22,7 @@ Route::middleware('guest')->group(function() {
 });
 
 Route::middleware('auth')->group(function() {
+    Route::view('/quotes/my', 'quotes.my')->name('quotes.my');
+
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
