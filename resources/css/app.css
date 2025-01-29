@@ -5,20 +5,26 @@
 @layer base {
     nav a,
     nav button {
-        @apply p-4 hover:bg-slate-500;
+        @apply text-custom-text font-bold p-4 hover:text-custom-primary-1;
+    }
+
+    p,
+    h1,
+    label {
+        @apply text-custom-text;
     }
 }
 
 @layer components {
     .btn-action {
-        @apply bg-slate-700 text-white font-bold m-1 py-2 px-6 rounded-md hover:opacity-90 active:opacity-80;
+        @apply bg-custom-primary-1 text-white font-bold m-1 py-2 px-6 hover:opacity-90 active:opacity-80;
     }
 
     .form-auth {
-        @apply inline-block bg-slate-100 py-2 px-8 rounded-md border border-slate-300;
+        @apply bg-custom-primary-2 inline-block py-2 px-8 border border-custom-primary-2 shadow;
     }
     
     .input-text {
-        @apply block min-w-80 p-2 my-2 rounded ring-1 ring-slate-200 focus:outline-none focus:ring-slate-300;
+        @apply block min-w-80 p-2 my-2 ring-1 ring-custom-primary-2 focus:outline-none focus:ring-custom-primary-1;
     }
 }

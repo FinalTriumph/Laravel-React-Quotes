@@ -1,4 +1,4 @@
-<header class="bg-slate-700 text-slate-100">
+<header class="bg-custom-neutral-1 shadow">
     <nav class="flex max-w-screen-lg mx-auto">
         <a href="{{ route('home') }}" class="mr-auto">Laravel React Quotes</a>
         <a href="{{ route('home') }}">Home</a>

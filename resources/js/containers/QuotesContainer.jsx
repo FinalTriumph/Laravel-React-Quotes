@@ -41,13 +41,13 @@ export default function QuotesContainer({ type }) {
                 current={currentPage}
                 total={totalPages}
                 onPageChange={(newPage) => getQuotes(newPage)}
-                className="flex justify-center m-2 mt-4"
-                pageItemClassName="bg-slate-100 hover:bg-slate-600 hover:text-slate-100"
-                activeItemClassName="bg-slate-700 text-slate-100"
-                disabledItemClassName="text-slate-300 pointer-events-none"
+                className="flex justify-center m-2 mt-6"
+                pageItemClassName="bg-custom-neutral-2 text-custom-text hover:bg-custom-primary-1 hover:text-custom-primary-2"
+                activeItemClassName="bg-custom-primary-1 text-white"
+                disabledItemClassName="text-custom-primary-2 pointer-events-none"
                 pageLinkClassName="inline-block py-2 px-4"
-                previousClassName="rounded-l-md"
-                nextClassName="rounded-r-md"
+                previousClassName="rounded-l"
+                nextClassName="rounded-r"
             />
         </div>
     );

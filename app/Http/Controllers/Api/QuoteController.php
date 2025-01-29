@@ -118,6 +118,9 @@ class QuoteController extends Controller
      */
     public function random(Request $request, RandomQuote $randomQuote)
     {
+        // TODO Remove this later, it's only for testing
+        sleep(2);
+
         return response()->json([
             'status' => 'ok',
             'data' => $randomQuote->get($request->query('source')),

@@ -5,5 +5,5 @@ export default function Source({ source }) {
         return (null);
     }
 
-    return (<p className="text-sm italic mb-4">source: {source}</p>);
+    return (<p className="text-custom-accent text-sm italic mb-4">source: {source}</p>);
 }
