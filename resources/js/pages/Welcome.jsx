@@ -3,8 +3,8 @@ import RandomQuoteContainer from '../containers/RandomQuoteContainer.jsx';
 
 export default function Welcome() {
     return (
-        <div>
-            <div className="bg-custom-primary-2 shadow p-4 mb-4">
+        <div className="text-left">
+            <div className="bg-custom-neutral-1 shadow py-4 px-6 mb-4">
                 <h1 className="font-bold">Random Quotes</h1>
             </div>
             <div className="grid grid-cols-2">

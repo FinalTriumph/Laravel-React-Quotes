@@ -3,8 +3,10 @@ import QuotesContainer from '../../containers/QuotesContainer.jsx';
 
 export default function AllQuotes() {
     return (
-        <div>
-            <p className="mx-4 mb-4">All Quotes</p>
+        <div className="text-left">
+            <div className="bg-custom-neutral-1 shadow py-4 px-6 mb-4">
+                <h1 className="font-bold">All Quotes</h1>
+            </div>
             <QuotesContainer type="all" />
         </div>
     );

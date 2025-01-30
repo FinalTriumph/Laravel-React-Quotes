@@ -42,10 +42,10 @@ export default function QuotesContainer({ type }) {
                 total={totalPages}
                 onPageChange={(newPage) => getQuotes(newPage)}
                 className="flex justify-center m-2 mt-6"
-                pageItemClassName="bg-custom-neutral-2 text-custom-text hover:bg-custom-primary-1 hover:text-custom-primary-2"
-                activeItemClassName="bg-custom-primary-1 text-white"
-                disabledItemClassName="text-custom-primary-2 pointer-events-none"
-                pageLinkClassName="inline-block py-2 px-4"
+                pageItemClassName="border-b-2 border-white text-custom-primary-1 hover:bg-custom-primary-1 hover:text-white"
+                activeItemClassName="font-bold border-b-custom-primary-1"
+                disabledItemClassName="pointer-events-none"
+                pageLinkClassName="inline-block py-2 px-3"
                 previousClassName="rounded-l"
                 nextClassName="rounded-r"
             />

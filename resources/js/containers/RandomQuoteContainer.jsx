@@ -58,7 +58,7 @@ export default function RandomQuoteContainer({ source, save }) {
     }, []);
 
     return (
-        <div className="flex flex-col max-w-sm p-6 m-2 border-custom-neutral-2 shadow">
+        <div className="flex flex-col p-8 m-2 border border-custom-neutral-2 shadow">
             <Quote quote={quote} />
             <Loading loading={loading} source={source} />
             <Error error={error} source={source} />

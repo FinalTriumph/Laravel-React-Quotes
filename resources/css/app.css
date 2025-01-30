@@ -5,7 +5,7 @@
 @layer base {
     nav a,
     nav button {
-        @apply text-custom-text font-bold p-4 hover:text-custom-primary-1;
+        @apply text-white font-bold p-4 hover:text-custom-primary-2;
     }
 
     p,
@@ -21,10 +21,10 @@
     }
 
     .form-auth {
-        @apply bg-custom-primary-2 inline-block py-2 px-8 border border-custom-primary-2 shadow;
+        @apply inline-block py-2 px-8 border border-custom-neutral-2 shadow text-left;
     }
     
     .input-text {
-        @apply block min-w-80 p-2 my-2 ring-1 ring-custom-primary-2 focus:outline-none focus:ring-custom-primary-1;
+        @apply block min-w-80 px-2 py-1 my-2 border-b border-custom-primary-2 focus:outline-none focus:border-custom-primary-1;
     }
 }

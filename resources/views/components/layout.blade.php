@@ -10,7 +10,7 @@
 <body class="min-h-screen flex flex-col">
     <x-header />
 
-    <main class="max-w-screen-lg mx-auto p-8">
+    <main class="w-full max-w-screen-lg mx-auto text-center p-8">
         {{ $slot }}
     </main>
 

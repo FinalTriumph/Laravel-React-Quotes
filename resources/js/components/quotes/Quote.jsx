@@ -6,7 +6,7 @@ export default function Quote({ quote }) {
     }
 
     return (
-        <div className="flex flex-col max-w-sm p-6 m-2 border border-custom-neutral-2 shadow">
+        <div className="flex flex-col p-8 m-2 border border-custom-neutral-2 shadow">
             <p className="font-bold">{quote.quote}</p>
             <p className="mb-4">- {quote.author}</p>
             <div className="flex mt-auto text-sm">
