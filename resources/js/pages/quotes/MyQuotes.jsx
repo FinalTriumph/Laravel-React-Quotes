@@ -1,7 +1,7 @@
 import React from 'react';
 import QuotesContainer from '../../containers/QuotesContainer.jsx';
 
-export default function MyQuotes({ name, email }) {
+export default function MyQuotes({ name, email, page }) {
     return (
         <div className="text-left">
             <div className="bg-custom-neutral-1 shadow py-4 px-6 mb-4">
@@ -9,7 +9,7 @@ export default function MyQuotes({ name, email }) {
                 <p>Name: {name}</p>
                 <p>Email: {email}</p>
             </div>
-            <QuotesContainer type="my" />
+            <QuotesContainer type="my" page={page} />
         </div>
     );
 }

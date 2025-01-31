@@ -9,34 +9,49 @@ import QuotesGrid from '../components/quotes/QuotesGrid.jsx';
 const urls = {
     all: '/api/quotes',
     my: '/api/quotes/my',
+    delete: '/api/quotes'
 };
 
-export default function QuotesContainer({ type }) {
+export default function QuotesContainer({ type, page }) {
     const [quotes, setQuotes] = useState(null);
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(parseInt(page, 10));
     const [totalPages, setTotalPages] = useState(null);
 
-    function getQuotes(page) {
+    function getQuotes(newPage) {
         axios.get(
-            `${urls[type] || urls.all}?page=${page}`
+            `${urls[type] || urls.all}?page=${newPage}`
         ).then(response => {
             setQuotes(response.data.quotes);
 
-            setCurrentPage(page);
+            setCurrentPage(newPage);
             setTotalPages(response.data.totalPages);
+
+            window.history.pushState({}, '', `?page=${newPage}`);
+        }).catch(error => {
+            console.error(error.message);
+        });
+    }
+
+    function deleteQuote(id) {
+        axios.delete(
+            `${urls.delete}/${id}`
+        ).then(response => {
+            if (response.data.status === 'ok') {
+                getQuotes(currentPage);
+            }
         }).catch(error => {
             console.error(error.message);
         });
     }
 
     useEffect(() => {
-        getQuotes(1);
+        getQuotes(currentPage);
     }, []);
 
     return (
         <div>
-            <QuotesGrid quotes={quotes} />
+            <QuotesGrid quotes={quotes} onDelete={deleteQuote} />
             <ResponsivePagination
                 current={currentPage}
                 total={totalPages}

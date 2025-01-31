@@ -7,6 +7,7 @@ use App\Models\Quote;
 use App\Plugins\RandomQuote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class QuoteController extends Controller
 {
@@ -26,7 +27,8 @@ class QuoteController extends Controller
                 'quote' => $quote->quote,
                 'author' => $quote->author,
                 'savedBy' => $quote->user->name,
-                'savedAt' => $quote->created_at->format('d.m.Y H:i')
+                'savedAt' => $quote->created_at->format('d.m.Y H:i'),
+                'savedByMe' => Auth::check() && Auth::user()->id === $quote->user->id
             ];
         }
 
@@ -54,7 +56,8 @@ class QuoteController extends Controller
                 'quote' => $quote->quote,
                 'author' => $quote->author,
                 'savedBy' => $quote->user->name,
-                'savedAt' => $quote->created_at->format('d.m.Y H:i')
+                'savedAt' => $quote->created_at->format('d.m.Y H:i'),
+                'savedByMe' => true
             ];
         }
 
@@ -108,10 +111,16 @@ class QuoteController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    /* public function destroy(Quote $quote)
+    public function destroy(Quote $quote)
     {
-        //
-    } */
+        Gate::authorize('delete', $quote);
+
+        $quote->delete();
+
+        return response()->json([
+            'status' => 'ok'
+        ]);
+    }
 
     /**
      * Get random quote

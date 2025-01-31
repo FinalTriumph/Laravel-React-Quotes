@@ -14,6 +14,7 @@ Route::apiResource('quotes', QuoteController::class)->only([
 
 Route::apiResource('quotes', QuoteController::class)->only([
     'store',
+    'destroy',
 ])->middleware('auth:sanctum');
 
 Route::prefix('quotes')->group(function () {
