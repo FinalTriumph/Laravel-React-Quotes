@@ -15,7 +15,8 @@ export default function Quote({ quote, onDelete }) {
                     &#x2715;
                 </button>
             )}
-            <p className="font-bold">{quote.quote}</p>
+            <p className="text-custom-accent text-sm italic mb-4">source: {quote.source}</p>
+            <p className="font-bold">{quote.text}</p>
             <p className="mb-4">- {quote.author}</p>
             <div className="flex mt-auto text-sm">
                 <p className="text-custom-accent mr-auto">{quote.savedBy}</p>

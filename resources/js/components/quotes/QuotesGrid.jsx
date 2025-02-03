@@ -6,6 +6,14 @@ export default function QuotesGrid({ quotes, onDelete }) {
         return (null);
     }
 
+    if (!quotes.length) {
+        return (
+            <div className="m-6">
+                <p>No results</p>
+            </div>
+        )
+    }
+
     return (
         <div className="grid grid-cols-2">
             {quotes.map(quote => (

@@ -15,8 +15,9 @@ class Quote extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'quote',
+        'text',
         'author',
+        'source'
     ];
 
     public function user(): BelongsTo

@@ -40,10 +40,7 @@ export default function RandomQuoteContainer({ source, save }) {
 
         axios.post(
             '/api/quotes',
-            {
-                quote: quote.text,
-                author: quote.author
-            }
+            quote,
         ).then(response => {
             setSaveStatus(response.data.status || 'error');
         }).catch(error => {

@@ -24,8 +24,9 @@ class QuoteController extends Controller
         foreach($quotes as $quote) {
             $preparedData[] = [
                 'id' => $quote->id,
-                'quote' => $quote->quote,
+                'text' => $quote->text,
                 'author' => $quote->author,
+                'source' => $quote->source,
                 'savedBy' => $quote->user->name,
                 'savedAt' => $quote->created_at->format('d.m.Y H:i'),
                 'savedByMe' => Auth::check() && Auth::user()->id === $quote->user->id
@@ -53,8 +54,9 @@ class QuoteController extends Controller
         foreach($quotes as $quote) {
             $preparedData[] = [
                 'id' => $quote->id,
-                'quote' => $quote->quote,
+                'text' => $quote->text,
                 'author' => $quote->author,
+                'source' => $quote->source,
                 'savedBy' => $quote->user->name,
                 'savedAt' => $quote->created_at->format('d.m.Y H:i'),
                 'savedByMe' => true
@@ -79,8 +81,9 @@ class QuoteController extends Controller
 
         // Validate
         $fields = $request->validate([
+            'text' => 'required',
             'author' => 'required',
-            'quote' => 'required',
+            'source' => 'required'
         ]);
 
         // Save

@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->text('quote');
+            $table->text('text');
             $table->string('author');
+            $table->string('source');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
