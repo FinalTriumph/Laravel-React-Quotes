@@ -7,9 +7,11 @@ import Buttons from '../components/randomQuote/Buttons.jsx';
 
 export default function RandomQuoteContainer({ source, save }) {
     const [quote, setQuote] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [saveStatus, setSaveStatus] = useState(null);
+
+    const localStorageKey = `${source || 'forismatic'}Quote`;
 
     function newQuote() {
         setQuote(null);
@@ -22,6 +24,8 @@ export default function RandomQuoteContainer({ source, save }) {
         ).then(response => {
             if (response.data.status === 'ok') {
                 setQuote(response.data.data);
+
+                localStorage.setItem(localStorageKey, JSON.stringify(response.data.data));
             } else {
                 setError('Error occurred while fetching quote');
             }
@@ -43,6 +47,10 @@ export default function RandomQuoteContainer({ source, save }) {
             quote,
         ).then(response => {
             setSaveStatus(response.data.status || 'error');
+
+            if (response.data.status === 'ok') {
+                localStorage.removeItem(localStorageKey);
+            }
         }).catch(error => {
             console.error(error.message);
 
@@ -51,6 +59,12 @@ export default function RandomQuoteContainer({ source, save }) {
     }
 
     useEffect(() => {
+        const localStorageQuote = JSON.parse(localStorage.getItem(localStorageKey));
+        if (localStorageQuote) {
+            setQuote(localStorageQuote);
+            return;
+        }
+
         newQuote();
     }, []);
 
