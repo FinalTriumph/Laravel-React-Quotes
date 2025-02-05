@@ -8,7 +8,7 @@
             @if ($item['method'] === 'get')
                 <a 
                     href="{{ route($item['route']) }}" 
-                    class="{{ $active == $item['route'] ? 'text-custom-accent' : '' }}"
+                    class="{{ $active == $item['route'] ? 'text-custom-neutral-1 border-b-2 border-custom-neutral-1' : '' }}"
                 >
                     {{ $item['title'] }}
                 </a>
