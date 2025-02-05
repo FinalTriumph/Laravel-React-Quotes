@@ -1,18 +1,24 @@
 <header class="bg-custom-primary-1 shadow">
     <nav class="flex max-w-screen-lg mx-auto">
         <a href="{{ route('home') }}" class="mr-auto">Laravel React Quotes</a>
-        <a href="{{ route('home') }}">Home</a>
-        <a href="{{ route('quotes.all') }}">All Quotes</a>
-        @guest
-            <a href="{{ route('login') }}">Login</a>
-            <a href="{{ route('register') }}">Register</a>
-        @endguest
-        @auth
-            <a href="{{ route('quotes.my') }}">My Quotes</a>
-            <form action="{{ route('logout') }}" method="post">
+
+        @foreach ($items as $item)
+            @continue(!navItemAvailable($item))
+        
+            @if ($item['method'] === 'get')
+                <a 
+                    href="{{ route($item['route']) }}" 
+                    class="{{ $active == $item['route'] ? 'text-custom-accent' : '' }}"
+                >
+                    {{ $item['title'] }}
+                </a>
+                @continue
+            @endif
+        
+            <form action="{{ route($item['route']) }}" method="{{ $item['method'] }}">
                 @csrf
-                <button>Logout</button>
+                <button>{{ $item['title'] }}</button>
             </form>
-        @endauth
+        @endforeach
     </nav>
 </header>
