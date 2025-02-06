@@ -1,4 +1,5 @@
 import React from 'react';
+import Source from '../randomQuote/Source'
 
 export default function Quote({ quote, onDelete }) {
     if (!quote) {
@@ -15,7 +16,7 @@ export default function Quote({ quote, onDelete }) {
                     &#x2715;
                 </button>
             )}
-            <p className="text-custom-accent text-sm italic mb-4">source: {quote.source}</p>
+            <Source source={quote.source} />
             <p className="font-bold">{quote.text}</p>
             <p className="mb-4">- {quote.author}</p>
             <div className="flex mt-auto text-sm">
