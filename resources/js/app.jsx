@@ -7,12 +7,14 @@ import Welcome from './pages/Welcome';
 import Home from './pages/Home';
 import AllQuotes from './pages/quotes/AllQuotes';
 import MyQuotes from './pages/quotes/MyQuotes';
+import SourceQuotes from './pages/quotes/SourceQuotes';
 
 const pages = {
     'welcome': <Welcome />,
     'home': <Home />,
     'all-quotes': <AllQuotes />,
     'my-quotes': <MyQuotes />,
+    'source-quotes': <SourceQuotes />,
 };
 
 Object.keys(pages).forEach((id) => {

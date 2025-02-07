@@ -5,14 +5,14 @@ import ResponsivePagination from 'react-responsive-pagination';
 // import 'react-responsive-pagination/themes/minimal.css';
 import QuotesGrid from '../components/quotes/QuotesGrid.jsx';
 
-
 const urls = {
     all: '/api/quotes',
     my: '/api/quotes/my',
+    source: '/api/quotes/source/',
     delete: '/api/quotes'
 };
 
-export default function QuotesContainer({ type, page }) {
+export default function QuotesContainer({ type, page, source }) {
     const [quotes, setQuotes] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(parseInt(page, 10));
@@ -46,6 +46,10 @@ export default function QuotesContainer({ type, page }) {
     }
 
     useEffect(() => {
+        if (type == 'source') {
+            urls[type] += source; 
+        }
+
         getQuotes(currentPage);
     }, []);
 

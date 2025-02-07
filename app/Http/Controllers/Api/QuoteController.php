@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\QuoteResource;
 use App\Models\Quote;
 use App\Plugins\RandomQuote;
 use Illuminate\Http\Request;
@@ -17,26 +18,12 @@ class QuoteController extends Controller
     public function index()
     {
         // Get quotes
-        $quotes = Quote::latest()->paginate(4);
-
-        // Prepare response data
-        $preparedData = [];
-        foreach($quotes as $quote) {
-            $preparedData[] = [
-                'id' => $quote->id,
-                'text' => $quote->text,
-                'author' => $quote->author,
-                'source' => $quote->source,
-                'savedBy' => $quote->user->name,
-                'savedAt' => $quote->created_at->format('d.m.Y H:i'),
-                'savedByMe' => Auth::check() && Auth::user()->id === $quote->user->id
-            ];
-        }
+        $quotes = Quote::with('user')->latest()->paginate(4);
 
         // Respond
         return response()->json([
             'status' => 'ok',
-            'quotes' => $preparedData,
+            'quotes' => QuoteResource::collection($quotes),
             'totalPages' => $quotes->lastPage(),
         ]);
     }
@@ -47,26 +34,27 @@ class QuoteController extends Controller
     public function my()
     {
         // Get quotes
-        $quotes = Auth::user()->quotes()->latest()->paginate(4);
-
-        // Prepare response data
-        $preparedData = [];
-        foreach($quotes as $quote) {
-            $preparedData[] = [
-                'id' => $quote->id,
-                'text' => $quote->text,
-                'author' => $quote->author,
-                'source' => $quote->source,
-                'savedBy' => $quote->user->name,
-                'savedAt' => $quote->created_at->format('d.m.Y H:i'),
-                'savedByMe' => true
-            ];
-        }
+        $quotes = Auth::user()->quotes()->with('user')->latest()->paginate(4);
 
         // Respond
         return response()->json([
             'status' => 'ok',
-            'quotes' => $preparedData,
+            'quotes' => QuoteResource::collection($quotes),
+            'totalPages' => $quotes->lastPage(),
+        ]);
+    }
+    /**
+     * Display a listing of the resource.
+     */
+    public function source(string $source)
+    {
+        // Get quotes
+        $quotes = Quote::where('source', $source)->with('user')->latest()->paginate(4);
+
+        // Respond
+        return response()->json([
+            'status' => 'ok',
+            'quotes' => QuoteResource::collection($quotes),
             'totalPages' => $quotes->lastPage(),
         ]);
     }

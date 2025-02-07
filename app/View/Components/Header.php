@@ -18,7 +18,7 @@ class Header extends Component
     public function __construct()
     {
         $this->items = config('nav');
-        $this->active = Route::currentRouteName();
+        $this->active = Route::currentRouteName() ?? '';
     }
 
     /**

@@ -35,14 +35,23 @@ export default function Source({ source }) {
 
     return (
         <div className="text-sm italic mb-4">
-            <p className="text-custom-accent">{sources[source].title}</p>
-            <a
-                className="text-custom-primary-2 hover:text-custom-primary-1"
-                href={sources[source].website}
-                target="_blank"
-            >
-                {sources[source].website}
-            </a>
+            <div>
+                <a
+                    href={`/quotes/source/${source}`}
+                    className="text-custom-accent hover:opacity-80"
+                >
+                    {sources[source].title}
+                </a>
+            </div>
+            <div>
+                <a
+                    className="text-custom-accent hover:hover:opacity-80"
+                    href={sources[source].website}
+                    target="_blank"
+                >
+                    {sources[source].website}
+                </a>
+            </div>
         </div>
     );
 }
