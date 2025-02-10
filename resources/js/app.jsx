@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import AllQuotes from './pages/quotes/AllQuotes';
 import MyQuotes from './pages/quotes/MyQuotes';
 import SourceQuotes from './pages/quotes/SourceQuotes';
+import UserQuotes from './pages/quotes/UserQuotes';
 
 const pages = {
     'welcome': <Welcome />,
@@ -15,6 +16,7 @@ const pages = {
     'all-quotes': <AllQuotes />,
     'my-quotes': <MyQuotes />,
     'source-quotes': <SourceQuotes />,
+    'user-quotes': <UserQuotes />,
 };
 
 Object.keys(pages).forEach((id) => {

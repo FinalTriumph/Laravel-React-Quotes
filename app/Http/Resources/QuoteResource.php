@@ -22,6 +22,7 @@ class QuoteResource extends JsonResource
             'text' => $this->resource->text,
             'author' => $this->resource->author,
             'source' => $this->resource->source,
+            'userId' => $this->resource->user_id,
             'savedBy' => $this->resource->user->name,
             'savedAt' => $this->resource->created_at->format('d.m.Y H:i'),
             'savedByMe' => $user ? $user->id === $this->resource->user->id : false,

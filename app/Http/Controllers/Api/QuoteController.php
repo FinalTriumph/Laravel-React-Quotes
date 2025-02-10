@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\QuoteResource;
 use App\Models\Quote;
+use App\Models\User;
 use App\Plugins\RandomQuote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,22 @@ class QuoteController extends Controller
     {
         // Get quotes
         $quotes = Quote::where('source', $source)->with('user')->latest()->paginate(4);
+
+        // Respond
+        return response()->json([
+            'status' => 'ok',
+            'quotes' => QuoteResource::collection($quotes),
+            'totalPages' => $quotes->lastPage(),
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function user(User $user)
+    {
+        // Get quotes
+        $quotes = $user->quotes()->with('user')->paginate(4);
 
         // Respond
         return response()->json([

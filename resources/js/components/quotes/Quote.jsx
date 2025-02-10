@@ -20,7 +20,12 @@ export default function Quote({ quote, onDelete }) {
             <p className="font-bold">{quote.text}</p>
             <p className="mb-4">- {quote.author}</p>
             <div className="flex mt-auto text-sm">
-                <p className="text-custom-accent mr-auto">{quote.savedBy}</p>
+                <a
+                    href={`/quotes/user/${quote.userId}`}
+                    className="mr-auto text-custom-accent hover:opacity-80"
+                >
+                    {quote.savedBy}
+                </a>
                 <p className="text-custom-accent">{quote.savedAt}</p>
             </div>
         </div>

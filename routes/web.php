@@ -13,6 +13,7 @@ Route::get('/', function () {
 
 Route::view('/quotes/all', 'quotes.all')->name('quotes.all');
 Route::view('/quotes/source/{source}', 'quotes.source');
+Route::view('/quotes/user/{user}', 'quotes.user');
 
 Route::middleware('guest')->group(function() {
     Route::view('/register', 'auth.register')->name('register');

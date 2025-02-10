@@ -9,10 +9,18 @@ const urls = {
     all: '/api/quotes',
     my: '/api/quotes/my',
     source: '/api/quotes/source/',
+    user: '/api/quotes/user/',
     delete: '/api/quotes'
 };
 
-export default function QuotesContainer({ type, page, source }) {
+export default function QuotesContainer(props) {
+    const {
+        type,
+        page,
+        source,
+        user,
+    } = props;
+
     const [quotes, setQuotes] = useState(null);
 
     const [currentPage, setCurrentPage] = useState(parseInt(page, 10));
@@ -48,6 +56,10 @@ export default function QuotesContainer({ type, page, source }) {
     useEffect(() => {
         if (type == 'source') {
             urls[type] += source; 
+        }
+
+        if (type == 'user') {
+            urls[type] += user; 
         }
 
         getQuotes(currentPage);
