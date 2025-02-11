@@ -16,6 +16,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-react": "^4.3.4",
+        "alpinejs": "^3.14.8",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",
         "react-responsive-pagination": "^2.10.0"
