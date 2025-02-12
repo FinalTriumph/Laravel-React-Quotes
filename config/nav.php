@@ -8,10 +8,28 @@ return [
         'method' => 'get',
     ],
     [
-        'title' => 'All Quotes',
-        'route' => 'quotes.all',
+        'title' => 'Quotes',
         'scope' => 'all',
-        'method' => 'get',
+        'dropdown' => [
+            [
+                'title' => 'Random Quotes',
+                'route' => 'home',
+                'scope' => 'all',
+                'method' => 'get',
+            ],
+            [
+                'title' => 'All Quotes',
+                'route' => 'quotes.all',
+                'scope' => 'all',
+                'method' => 'get',
+            ],
+            [
+                'title' => 'My Quotes',
+                'route' => 'quotes.my',
+                'scope' => 'auth',
+                'method' => 'get',
+            ]
+        ],
     ],
     [
         'title' => 'Login',
@@ -26,15 +44,23 @@ return [
         'method' => 'get',
     ],
     [
-        'title' => 'My Quotes',
-        'route' => 'quotes.my',
+        'title' => 'User',
         'scope' => 'auth',
-        'method' => 'get',
-    ],
-    [
-        'title' => 'Logout',
-        'route' => 'logout',
-        'scope' => 'auth',
-        'method' => 'post',
+        'customTitle' => 'userAvatar',
+        'customHeader' => 'userInfo',
+        'dropdown' => [
+            [
+                'title' => 'Profile',
+                'route' => 'home',
+                'scope' => 'auth',
+                'method' => 'get',
+            ],
+            [
+                'title' => 'Logout',
+                'route' => 'logout',
+                'scope' => 'auth',
+                'method' => 'post',
+            ]
+        ],
     ],
 ];

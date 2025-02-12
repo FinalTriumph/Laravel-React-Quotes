@@ -1,41 +1,46 @@
 <header class="bg-custom-primary-1 shadow">
-    <nav class="flex items-center max-w-screen-lg mx-auto">
+    <nav class="flex max-w-screen-lg mx-auto">
         <a href="{{ route('home') }}" class="mr-auto">Laravel React Quotes</a>
 
         @foreach ($items as $item)
             @continue(!navItemAvailable($item))
-        
-            @if ($item['method'] === 'get')
-                <a 
-                    href="{{ route($item['route']) }}" 
-                    class="{{ $active == $item['route'] ? 'text-custom-neutral-1 border-b-2 border-custom-neutral-1' : '' }}"
-                >
-                    {{ $item['title'] }}
-                </a>
+
+            @if (!($item['dropdown'] ?? null))
+                @if ($item['method'] === 'get')
+                    <a 
+                        href="{{ route($item['route']) }}" 
+                        class="{{ $active == $item['route'] ? 'text-custom-neutral-1 border-b-custom-neutral-1' : '' }}"
+                    >
+                        {{ $item['title'] }}
+                    </a>
+                    @continue
+                @endif
+            
+                <form action="{{ route($item['route']) }}" method="{{ $item['method'] }}">
+                    @csrf
+                    <button>{{ $item['title'] }}</button>
+                </form>
                 @continue
             @endif
-        
-            <form action="{{ route($item['route']) }}" method="{{ $item['method'] }}">
-                @csrf
-                <button>{{ $item['title'] }}</button>
-            </form>
-        @endforeach
 
-        {{-- TODO This is still experimental --}}
-        @auth
-            <!-- User Avatar and Dropdown Menu -->
             <div class="relative" x-data="{ open: false }">
-                <button
-                    @click="open = !open"
-                    class="p-0 mt-1 mx-4 focus:outline-none rounded-full h-8 w-8 overflow-hidden hover:opacity-90"
-                >
-                    <img
-                        src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}&size=128&background=d5e3e6&color=5b6d92&bold=true"
-                        alt="User Avatar"
-                    />
-                </button>
+                @if (($item['customTitle'] ?? null) === 'userAvatar')
+                    <button
+                        @click="open = !open"
+                        class="py-3"
+                    >
+                        <img
+                            src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}&size=128&background=d5e3e6&color=5b6d92&bold=true"
+                            alt="User Avatar"
+                            class="h-8 w-8 rounded-full"
+                        />
+                    </button>
+                @else
+                    <button @click="open = !open">
+                        {{ $item['title'] }}
+                    </button>
+                @endif
 
-                <!-- Dropdown Menu -->
                 <div
                     x-show="open"
                     @click.outside="open = false"
@@ -45,31 +50,41 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute right-2 mt-2 min-w-48 bg-custom-primary-1 border border-custom-neutral-2 rounded-md shadow-lg z-10"
+                    class="absolute right-0 min-w-48 bg-custom-primary-1 border shadow-lg z-10"
                 >
-                    <div class="p-4 border-b border-custom-neutral-1">
-                        <p class="text-custom-neutral-1">{{ Auth::user()->name }}</p>
-                        <p class="text-custom-neutral-1">{{ Auth::user()->email }}</p>
-                    </div>
+                    @if (($item['customHeader'] ?? null) === 'userInfo')
+                        <div class="p-4 border-b border-custom-neutral-1">
+                            <p class="text-custom-neutral-1">{{ Auth::user()->name }}</p>
+                            <p class="text-custom-neutral-1">{{ Auth::user()->email }}</p>
+                        </div>
+                    @endif
+
                     <div class="py-2">
-                        <a
-                            href="{{ route('home') }}"
-                            class="btn-nav-dropdown"
-                        >
-                            Profile
-                        </a>
-                        <form action="{{ route('logout') }}" method="post">
-                            @csrf
-                            <button
-                                type="submit"
-                                class="btn-nav-dropdown w-full text-left"
-                            >
-                                Logout
-                            </button>
-                        </form>
+                        @foreach ($item['dropdown'] as $dropdownItem)
+                            @continue(!navItemAvailable($dropdownItem))
+
+                            @if ($dropdownItem['method'] === 'get')
+                                <a
+                                    href="{{ route($dropdownItem['route']) }}"
+                                    class="btn-nav-dropdown {{ $active == $dropdownItem['route'] ? 'text-custom-neutral-1' : '' }}"
+                                >
+                                    {{ $dropdownItem['title'] }}
+                                </a>
+                                @continue
+                            @endif
+                        
+                            <form action="{{ route($dropdownItem['route']) }}" method="{{ $dropdownItem['method'] }}">
+                                @csrf
+                                <button
+                                    class="btn-nav-dropdown w-full text-left"
+                                >
+                                    {{ $dropdownItem['title'] }}
+                                </button>
+                            </form>
+                        @endforeach
                     </div>
                 </div>
             </div>
-        @endauth
+        @endforeach
     </nav>
 </header>
