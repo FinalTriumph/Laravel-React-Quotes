@@ -8,28 +8,16 @@ return [
         'method' => 'get',
     ],
     [
-        'title' => 'Quotes',
+        'title' => 'All Quotes',
+        'route' => 'quotes.all',
         'scope' => 'all',
-        'dropdown' => [
-            [
-                'title' => 'Random Quotes',
-                'route' => 'home',
-                'scope' => 'all',
-                'method' => 'get',
-            ],
-            [
-                'title' => 'All Quotes',
-                'route' => 'quotes.all',
-                'scope' => 'all',
-                'method' => 'get',
-            ],
-            [
-                'title' => 'My Quotes',
-                'route' => 'quotes.my',
-                'scope' => 'auth',
-                'method' => 'get',
-            ]
-        ],
+        'method' => 'get',
+    ],
+    [
+        'title' => 'My Quotes',
+        'route' => 'quotes.my',
+        'scope' => 'auth',
+        'method' => 'get',
     ],
     [
         'title' => 'Login',
@@ -51,7 +39,7 @@ return [
         'dropdown' => [
             [
                 'title' => 'Profile',
-                'route' => 'home',
+                'route' => 'user.profile',
                 'scope' => 'auth',
                 'method' => 'get',
             ],

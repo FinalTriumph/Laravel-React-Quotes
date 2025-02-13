@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     if (Auth::check()) {
@@ -25,6 +26,12 @@ Route::middleware('guest')->group(function() {
 
 Route::middleware('auth')->group(function() {
     Route::view('/quotes/my', 'quotes.my')->name('quotes.my');
+    Route::view('/user/profile', 'user.profile')->name('user.profile');
+
+    Route::resource('user', UserController::class)->only([
+        'edit',
+        'update',
+    ]);
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
