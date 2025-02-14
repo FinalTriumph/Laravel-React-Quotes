@@ -1,7 +1,7 @@
 @props(['user'])
 
 <x-layout>
-    <form action="{{ route('user.update', $user) }}" method="post" class="form-auth">
+    <form action="{{ route('user.update') }}" method="post" class="form-auth">
         @csrf
         @method('PATCH')
 
@@ -10,8 +10,8 @@
             <input
                 type="text"
                 name="name"
-                value="{{ old('name') ?? $user->name }}"
-                class="input-text @error('name') ring-red-500 focus:ring-red-500 @enderror"
+                value="{{ old('name') ?? auth()->user()->name }}"
+                class="input-text @error('name') input-text--error @enderror"
             >
             @error('name')
                 <p class="text-xs text-red-500">{{ $message }}</p>
@@ -23,8 +23,8 @@
             <input
                 type="text"
                 name="email"
-                value="{{ old('email') ?? $user->email }}"
-                class="input-text @error('email') ring-red-500 focus:ring-red-500 @enderror"
+                value="{{ old('email') ?? auth()->user()->email }}"
+                class="input-text @error('email') input-text--error @enderror"
             >
             @error('email')
                 <p class="text-xs text-red-500">{{ $message }}</p>

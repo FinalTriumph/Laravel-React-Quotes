@@ -31,4 +31,8 @@
     .input-text {
         @apply block min-w-80 px-2 py-1 my-1 border-b border-custom-primary-2 focus:outline-none focus:border-custom-primary-1;
     }
+
+    .input-text--error {
+        @apply border-red-500 focus:border-red-500;
+    }
 }

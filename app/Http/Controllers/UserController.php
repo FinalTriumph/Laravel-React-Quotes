@@ -4,58 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Update user profile data
+     *
+     * TODO Potentially can add more profile data
+     * and then make 'changeEmail' also as separate action.
+     * 
      */
-    /* public function index()
+    public function update(Request $request)
     {
-        //
-    } */
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    /* public function create()
-    {
-        //
-    } */
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    /* public function store(Request $request)
-    {
-        //
-    } */
-
-    /**
-     * Display the specified resource.
-     */
-    /* public function show(string $id)
-    {
-        //
-    } */
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(User $user)
-    {
-        Gate::authorize('modify', $user);
-
-        return view('user.edit', ['user' => $user]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        Gate::authorize('modify', $user);
+        $user = Auth::user();
 
         $fields = $request->validate([
             'name' => 'required|min:5|max:20',
@@ -68,10 +31,25 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Update user password
      */
-    /* public function destroy(string $id)
+    public function changePassword(Request $request)
     {
-        //
-    } */
+        $fields = $request->validate([
+            'old_password' => 'required|min:5',
+            'password' => 'required|min:5|confirmed',
+        ]);
+
+        $user = Auth::user();
+
+        if (!Auth::attempt(['email' => $user->email, 'password' => $fields['old_password']])) {
+            throw ValidationException::withMessages([
+                'old_password' => 'The provided password does not match our records.'
+            ]);
+        }
+
+        $user->update(['password' => $fields['password']]);
+
+        return redirect()->route('user.profile');
+    }
 }

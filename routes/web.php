@@ -26,12 +26,16 @@ Route::middleware('guest')->group(function() {
 
 Route::middleware('auth')->group(function() {
     Route::view('/quotes/my', 'quotes.my')->name('quotes.my');
-    Route::view('/user/profile', 'user.profile')->name('user.profile');
 
-    Route::resource('user', UserController::class)->only([
-        'edit',
-        'update',
-    ]);
+    Route::prefix('user')->group(function () {
+        Route::view('/profile', 'user.profile')->name('user.profile');
+
+        Route::view('/edit', 'user.edit')->name('user.edit');
+        Route::patch('/update', [UserController::class, 'update'])->name('user.update');
+    
+        Route::view('/change-password', 'user.change-password')->name('user.password.change');
+        Route::patch('/change-password', [UserController::class, 'changePassword'])->name('user.password.update');
+    });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });

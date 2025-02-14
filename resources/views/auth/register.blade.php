@@ -8,7 +8,7 @@
                 type="text"
                 name="name"
                 value="{{ old('name') }}"
-                class="input-text @error('name') ring-red-500 focus:ring-red-500 @enderror"
+                class="input-text @error('name') input-text--error @enderror"
             >
             @error('name')
                 <p class="text-xs text-red-500">{{ $message }}</p>
@@ -21,7 +21,7 @@
                 type="text"
                 name="email"
                 value="{{ old('email') }}"
-                class="input-text @error('email') ring-red-500 focus:ring-red-500 @enderror"
+                class="input-text @error('email') input-text--error @enderror"
             >
             @error('email')
                 <p class="text-xs text-red-500">{{ $message }}</p>
@@ -33,7 +33,7 @@
             <input
                 type="password"
                 name="password"
-                class="input-text @error('password') ring-red-500 focus:ring-red-500 @enderror"
+                class="input-text @error('password') input-text--error @enderror"
             >
             @error('password')
                 <p class="text-xs text-red-500">{{ $message }}</p>
@@ -45,7 +45,7 @@
             <input
                 type="password"
                 name="password_confirmation"
-                class="input-text @error('password') ring-red-500 focus:ring-red-500 @enderror"
+                class="input-text @error('password') input-text--error @enderror"
             >
         </div>
 

@@ -18,16 +18,15 @@
                 <div>
                     <a
                         class="btn-action inline-block my-2"
-                        href="{{ route('user.edit', auth()->user()) }}"
+                        href="{{ route('user.edit') }}"
                     >
                         Edit profile
                     </a>
                 </div>
                 <div>
-                    {{-- TODO --}}
                     <a
                         class="btn-action inline-block my-2"
-                        href="{{ route('user.profile') }}"
+                        href="{{ route('user.password.change') }}"
                     >
                         Change password
                     </a>
