@@ -73,9 +73,15 @@ class RandomQuote
     //
     private function prepareQuoterism(array $data): array
     {
-        return [
+        /* return [
             'text' => $data['random']['text'],
             'author' => $data['random']['author']['name'],
+            'source' => 'quoterism'
+        ]; */
+
+        return [
+            'text' => $data['text'],
+            'author' => $data['author']['name'],
             'source' => 'quoterism'
         ];
     }

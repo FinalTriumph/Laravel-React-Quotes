@@ -52,4 +52,38 @@ class UserController extends Controller
 
         return redirect()->route('user.profile');
     }
+
+    /**
+     * Delete user profile
+     */
+    public function deleteProfile(Request $request)
+    {
+        $fields = $request->validate([
+            'password' => 'required',
+        ]);
+
+        $user = Auth::user();
+
+        // Validate password
+        if (!Auth::attempt(['email' => $user->email, 'password' => $fields['password']])) {
+            throw ValidationException::withMessages([
+                'password' => 'The provided password does not match our records.'
+            ]);
+        }
+
+        // Logout user
+        Auth::logout();
+
+        // Invalidate session
+        $request->session()->invalidate();
+
+        // Regenerate CSRF token
+        $request->session()->regenerateToken();
+
+        // Delete user profile
+        $user->delete();
+
+        // Redirect
+        return redirect()->route('home');
+    }
 }

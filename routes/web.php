@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function() {
     
         Route::view('/change-password', 'user.change-password')->name('user.password.change');
         Route::patch('/change-password', [UserController::class, 'changePassword'])->name('user.password.update');
+
+        Route::view('/delete-profile', 'user.delete-profile')->name('user.profile.delete');
+        Route::delete('/delete-profile', [UserController::class, 'deleteProfile'])->name('user.delete');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

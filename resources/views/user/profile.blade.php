@@ -32,10 +32,9 @@
                     </a>
                 </div>
                 <div>
-                    {{-- TODO --}}
                     <a
                         class="btn-action inline-block my-2 bg-custom-accent"
-                        href="{{ route('user.profile') }}"
+                        href="{{ route('user.profile.delete') }}"
                     >
                         Delete profile
                     </a>
