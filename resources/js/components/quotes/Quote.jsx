@@ -7,7 +7,7 @@ export default function Quote({ quote, onDelete }) {
     }
 
     return (
-        <div className="flex flex-col relative p-8 m-2 border border-custom-neutral-2 shadow">
+        <div className="flex flex-col relative p-8 m-2 bg-white border border-custom-neutral-2 shadow">
             {quote.savedByMe && (
                 <button
                     className="absolute top-1 right-2 text-custom-primary-2 hover:text-red-500"

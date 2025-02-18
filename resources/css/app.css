@@ -25,7 +25,7 @@
     }
 
     .form-auth {
-        @apply inline-block py-2 px-8 border border-custom-neutral-2 shadow text-left;
+        @apply inline-block py-2 px-8 bg-white border border-custom-neutral-2 shadow text-left;
     }
     
     .input-text {

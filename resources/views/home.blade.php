@@ -1,7 +1,3 @@
 <x-layout>
-    <div
-        id="home"
-        data-name="{{ auth()->user()->name }}"
-        data-email="{{ auth()->user()->email }}"
-    ></div>
+    <div id="home"></div>
 </x-layout>

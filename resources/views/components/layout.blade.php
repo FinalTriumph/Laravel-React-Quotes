@@ -7,10 +7,10 @@
     @viteReactRefresh
     @vite('resources/js/app.jsx')
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-gradient-to-r from-custom-primary-1 to-custom-neutral-1">
     <x-header />
 
-    <main class="w-full max-w-screen-lg mx-auto text-center p-8">
+    <main class="w-full max-w-screen-lg mx-auto text-center py-6 px-2">
         {{ $slot }}
     </main>
 
