@@ -50,7 +50,7 @@
                     x-transition:leave="transition ease-in duration-75"
                     x-transition:leave-start="transform opacity-100 scale-100"
                     x-transition:leave-end="transform opacity-0 scale-95"
-                    class="absolute right-0 min-w-48 bg-custom-primary-1 border shadow-lg z-10"
+                    class="absolute right-0 min-w-48 bg-custom-primary-1 border border-custom-primary-2 shadow-lg rounded-lg z-10"
                 >
                     @if (($item['customHeader'] ?? null) === 'userInfo')
                         <div class="p-4 border-b border-custom-neutral-1">

@@ -43,7 +43,7 @@ export default function Source({ source }) {
                     {sources[source].title}
                 </a>
             </div>
-            <div>
+            {/* <div>
                 <a
                     className="text-custom-accent hover:hover:opacity-80"
                     href={sources[source].website}
@@ -51,7 +51,7 @@ export default function Source({ source }) {
                 >
                     {sources[source].website}
                 </a>
-            </div>
+            </div> */}
         </div>
     );
 }

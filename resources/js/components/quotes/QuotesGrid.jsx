@@ -9,7 +9,7 @@ export default function QuotesGrid({ quotes, onDelete }) {
     if (!quotes.length) {
         return (
             <div className="m-4 px-6">
-                <p className="text-white">No results</p>
+                <p>No results</p>
             </div>
         )
     }

@@ -24,6 +24,9 @@ export default {
                     'accent': '#d18266',
                     // 'text': '#364042',
                     'text': '#393646',
+                    // 'danger': '#d96a5c',
+                    'danger': '#e05a49',
+                    // 'danger': '#c75243',
                 }
             }
         },

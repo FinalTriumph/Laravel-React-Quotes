@@ -16,7 +16,7 @@
         </div>
     
         <button
-            class="btn-action w-full m-0 mt-2 mb-6 bg-custom-accent"
+            class="btn-action w-full m-0 mt-2 mb-6 bg-custom-danger"
         >
             Delete Profile
         </button>

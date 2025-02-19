@@ -7,7 +7,7 @@
     @viteReactRefresh
     @vite('resources/js/app.jsx')
 </head>
-<body class="min-h-screen flex flex-col bg-gradient-to-r from-custom-primary-1 to-custom-neutral-1">
+<body class="min-h-screen flex flex-col bg-[linear-gradient(160deg,#D0D8E2,#F5F1EB,#D0D8E2)]">
     <x-header />
 
     <main class="w-full max-w-screen-lg mx-auto text-center py-6 px-2">
