@@ -1,7 +1,5 @@
 <x-layout>
-    <div class="px-10 py-4 mb-4 bg-custom-primary-2 shadow rounded-lg text-left">
-        <p class="font-bold text-lg">Profile</p>
-    </div>
+    <x-section-title title="Profile" />
     <div class="text-left p-8 m-2 bg-white border border-custom-neutral-2 shadow rounded-lg">
         <div class="pb-4 mb-4 border-b">
             <div class="mb-2">

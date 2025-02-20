@@ -1,6 +1,5 @@
-@props(['user'])
-
 <x-layout>
+    <x-section-title title="Edit Profile" />
     <form action="{{ route('user.update') }}" method="post" class="form-auth">
         @csrf
         @method('PATCH')
@@ -31,6 +30,13 @@
             @enderror
         </div>
 
-        <button class="btn-action w-full m-0 mt-2 mb-6">Save</button>
+        <button class="btn-action w-full m-0 mt-2">Save</button>
+
+        <a
+            class="btn-action block text-center m-0 mt-2 mb-6"
+            href="{{ route('user.profile') }}"
+        >
+            Profile
+        </a>
     </form>
 </x-layout>

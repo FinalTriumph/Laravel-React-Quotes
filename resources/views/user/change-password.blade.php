@@ -1,4 +1,5 @@
 <x-layout>
+    <x-section-title title="Change Password" />
     <form action="{{ route('user.password.update') }}" method="post" class="form-auth">
         @csrf
         @method('PATCH')
@@ -36,6 +37,13 @@
             >
         </div>
     
-        <button class="btn-action w-full m-0 mt-2 mb-6">Save</button>
+        <button class="btn-action w-full m-0 mt-2">Save</button>
+
+        <a
+            class="btn-action block text-center m-0 mt-2 mb-6"
+            href="{{ route('user.profile') }}"
+        >
+            Profile
+        </a>
     </form>
 </x-layout>

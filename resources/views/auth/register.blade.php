@@ -1,4 +1,5 @@
 <x-layout>
+    <x-section-title title="Register" />
     <form action="{{ route('register') }}" method="post" class="form-auth">
         @csrf
 
