@@ -22,13 +22,13 @@ export default {
                     'neutral-1': '#f0e2d2',
                     'neutral-2': '#efeee5',
                     'accent': '#d18266',
-                    // 'text': '#364042',
                     'text': '#393646',
-                    // 'danger': '#d96a5c',
                     'danger': '#e05a49',
-                    // 'danger': '#c75243',
                 }
-            }
+            },
+            backgroundImage: {
+                'body-background': "url('/images/body-background.jpg')",
+            },
         },
     },
     plugins: [],
