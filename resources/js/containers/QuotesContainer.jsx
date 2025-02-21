@@ -74,7 +74,7 @@ export default function QuotesContainer(props) {
                     total={totalPages}
                     onPageChange={(newPage) => getQuotes(newPage)}
                     className="flex justify-center m-2 mt-6"
-                    pageItemClassName="border-b-2 border-white text-custom-primary-1 hover:bg-custom-primary-1 hover:text-white"
+                    pageItemClassName="border-b-2 border-transparent text-custom-primary-1 hover:bg-custom-primary-1 hover:text-white"
                     activeItemClassName="font-bold border-b-custom-primary-1"
                     disabledItemClassName="pointer-events-none"
                     pageLinkClassName="inline-block py-2 px-3"
