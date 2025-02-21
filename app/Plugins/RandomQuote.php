@@ -9,9 +9,10 @@ class RandomQuote
     //
     private $sources= [
         'forismatic' => 'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en',
-        'programming' => 'https://programming-quotes-api.azurewebsites.net/api/quotes/random',
+        'programming' => 'https://programming-quotes-api.azurewebsites.net/api/quotes/random', // Looks like currently not working
         'zen' => 'https://zenquotes.io/api/random',
         'quoterism' => 'https://www.quoterism.com/api/quotes/random',
+        'favqs' => 'https://favqs.com/api/qotd'
     ];
 
     //
@@ -34,6 +35,8 @@ class RandomQuote
             case 'quoterism':
                 $return = $this->prepareQuoterism($response);
                 break;
+            case 'favqs':
+                $return = $this->prepareFavqs($response);
             default:
                 break;
         }
@@ -83,6 +86,16 @@ class RandomQuote
             'text' => $data['text'],
             'author' => $data['author']['name'],
             'source' => 'quoterism'
+        ];
+    }
+
+    //
+    private function prepareFavqs(array $data): array
+    {
+        return [
+            'text' => $data['quote']['body'],
+            'author' => $data['quote']['author'],
+            'source' => 'favqs'
         ];
     }
 

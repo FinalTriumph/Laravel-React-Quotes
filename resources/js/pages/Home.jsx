@@ -10,7 +10,8 @@ export default function Home() {
                 <RandomQuoteContainer source="forismatic" save />
                 <RandomQuoteContainer source="quoterism" save />
                 <RandomQuoteContainer source="zen" save />
-                <RandomQuoteContainer source="programming" save />
+                {/* <RandomQuoteContainer source="programming" save /> */}
+                <RandomQuoteContainer source="favqs" save />
             </div>
         </div>
     );

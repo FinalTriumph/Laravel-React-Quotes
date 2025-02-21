@@ -18,6 +18,10 @@ const sources = {
         'title': 'Programming Quotes',
         'website': 'https://programming-quotes-api.azurewebsites.net/'
     },
+    'favqs': {
+        'title': 'FavQs',
+        'website': 'https://favqs.com/'
+    },
 };
 
 export default function Source({ source }) {

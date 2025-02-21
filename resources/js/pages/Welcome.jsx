@@ -10,7 +10,8 @@ export default function Welcome() {
                 <RandomQuoteContainer source="forismatic" />
                 <RandomQuoteContainer source="quoterism" />
                 <RandomQuoteContainer source="zen" />
-                <RandomQuoteContainer source="programming" />
+                {/* <RandomQuoteContainer source="programming" /> */}
+                <RandomQuoteContainer source="favqs" />
             </div>
         </div>
     );
