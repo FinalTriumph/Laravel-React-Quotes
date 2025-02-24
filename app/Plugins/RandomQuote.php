@@ -6,14 +6,12 @@ use Illuminate\Support\Facades\Http;
 
 class RandomQuote
 {
-    //
-    private $sources= [
-        'forismatic' => 'https://api.forismatic.com/api/1.0/?method=getQuote&format=json&lang=en',
-        'programming' => 'https://programming-quotes-api.azurewebsites.net/api/quotes/random', // Looks like currently not working
-        'zen' => 'https://zenquotes.io/api/random',
-        'quoterism' => 'https://www.quoterism.com/api/quotes/random',
-        'favqs' => 'https://favqs.com/api/qotd'
-    ];
+    private $sources;
+
+    public function __construct()
+    {
+        $this->sources = config('quotes.sources');
+    }
 
     //
     private $default = 'forismatic';
@@ -76,12 +74,6 @@ class RandomQuote
     //
     private function prepareQuoterism(array $data): array
     {
-        /* return [
-            'text' => $data['random']['text'],
-            'author' => $data['random']['author']['name'],
-            'source' => 'quoterism'
-        ]; */
-
         return [
             'text' => $data['text'],
             'author' => $data['author']['name'],
@@ -106,7 +98,7 @@ class RandomQuote
             $source = $this->default;
         }
 
-        $response = Http::get($this->sources[$source]);
+        $response = Http::get($this->sources[$source]['url']);
         $response = json_decode($response->body(), true);
 
         return $this->prepareQuote($response, $source);

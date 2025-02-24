@@ -1,7 +1,7 @@
 import React from 'react';
 import Quote from './Quote.jsx';
 
-export default function QuotesGrid({ quotes, onDelete }) {
+export default function QuotesGrid({ quotes, sources, onDelete }) {
     if (!quotes) {
         return (null);
     }
@@ -21,6 +21,7 @@ export default function QuotesGrid({ quotes, onDelete }) {
                     key={quote.id}
                     quote={quote}
                     onDelete={onDelete}
+                    sourceTitle={(sources && sources[quote.source]) ? sources[quote.source].title : quote.source}
                 />
             ))}
         </div>

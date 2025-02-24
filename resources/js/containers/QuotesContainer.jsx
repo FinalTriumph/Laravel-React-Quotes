@@ -19,6 +19,7 @@ export default function QuotesContainer(props) {
         page,
         source,
         user,
+        sources,
     } = props;
 
     const [quotes, setQuotes] = useState(null);
@@ -67,7 +68,7 @@ export default function QuotesContainer(props) {
 
     return (
         <div>
-            <QuotesGrid quotes={quotes} onDelete={deleteQuote} />
+            <QuotesGrid quotes={quotes} onDelete={deleteQuote} sources={sources} />
             {totalPages && totalPages > 1 && (
                 <ResponsivePagination
                     current={currentPage}

@@ -25,7 +25,16 @@ Object.keys(pages).forEach((id) => {
         return;
     }
 
-    const props = Object.assign({}, element.dataset);
+    // const props = Object.assign({}, element.dataset);
+    const props = {};
+    Object.keys(element.dataset).forEach(key => {
+        const value = element.dataset[key];
+        try {
+            props[key] = JSON.parse(value);
+        } catch (error) {
+            props[key] = value; // If it's not JSON, just assign the string value
+        }
+    });
     const render = Object.keys(props).length ? React.cloneElement(pages[id], props) : pages[id];
 
     ReactDOM.createRoot(element).render(render);

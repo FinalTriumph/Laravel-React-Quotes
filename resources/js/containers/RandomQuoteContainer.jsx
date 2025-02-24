@@ -5,7 +5,7 @@ import Loading from '../components/randomQuote/Loading.jsx';
 import Error from '../components/randomQuote/Error.jsx';
 import Buttons from '../components/randomQuote/Buttons.jsx';
 
-export default function RandomQuoteContainer({ source, save }) {
+export default function RandomQuoteContainer({ source, sourceTitle, save }) {
     const [quote, setQuote] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -70,9 +70,9 @@ export default function RandomQuoteContainer({ source, save }) {
 
     return (
         <div className="flex flex-col p-8 m-2 bg-white border border-custom-neutral-2 shadow rounded-lg">
-            <Quote quote={quote} />
-            <Loading loading={loading} source={source} />
-            <Error error={error} source={source} />
+            <Quote quote={quote} sourceTitle={sourceTitle} />
+            <Loading loading={loading} source={source} sourceTitle={sourceTitle} />
+            <Error error={error} source={source} sourceTitle={sourceTitle} />
             <Buttons
                 loading={loading}
                 save={save && !error}

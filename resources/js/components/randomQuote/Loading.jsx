@@ -1,14 +1,14 @@
 import React from 'react';
 import Source from './Source.jsx';
 
-export default function Loading({ loading, source }) {
+export default function Loading({ loading, source, sourceTitle }) {
     if (!loading) {
         return (null);
     }
 
     return (
         <div className="relative h-full min-h-32">
-            <Source source={source} />
+            <Source source={source} title={sourceTitle} />
             <div className="absolute w-full h-full top-0 flex items-center justify-center">
                 <div role="status">
                     <svg aria-hidden="true" className="w-10 h-10 text-custom-primary-2 animate-spin dark:text-gray-600 fill-custom-primary-1" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
