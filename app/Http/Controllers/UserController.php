@@ -86,4 +86,12 @@ class UserController extends Controller
         // Redirect
         return redirect()->route('home');
     }
+
+    /**
+     * 
+     */
+    public function userQuotesPage(User $user)
+    {
+        return view('quotes.user', compact('user'));
+    }
 }
